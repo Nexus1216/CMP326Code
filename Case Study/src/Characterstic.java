@@ -32,6 +32,10 @@ public class Characterstic
 	
 	public void setRating()
 	{
+		while (!isValid(rating))
+		{
+			
+		
 		System.out.println("Enter Rating: ");
 		Scanner kb = new Scanner(System.in);
 		int r = kb.nextInt(); 
@@ -39,10 +43,14 @@ public class Characterstic
 		if(isValid(r))
 		{
 			rating = r;
+			System.out.println("Description: " + descrition + "Rating: " 
+					+ rating);
+			
 		}
 		else
 			System.out.println("Invalid Rating.");
-		
+			
+		}
 	}
 	
 	public int getRating()
@@ -79,16 +87,16 @@ public class Characterstic
 		
 		c2.setRating(11);
 		
-		while (!c2.isValid(c2.getRating()))
-		{
-			if(c2.isValid(c2.getRating()))
-			{
-				System.out.println("Description: " + c2.getDescrition() + "Description: " 
-						+ c2.getRating());
-			}
-			else
-				c2.setRating();
-		}
+	//	while (!c2.isValid(c2.getRating()))
+		//{
+	//		if(c2.isValid(c2.getRating()))
+		//	{
+			//	System.out.println("Description: " + c2.getDescrition() + "Description: " 
+				//		+ c2.getRating());
+//			}
+	//		else
+		//		c2.setRating();
+	//	}
 
 	}
 
