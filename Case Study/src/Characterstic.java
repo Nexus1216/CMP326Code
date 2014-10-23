@@ -87,16 +87,7 @@ public class Characterstic
 		
 		c2.setRating(11);
 		
-	//	while (!c2.isValid(c2.getRating()))
-		//{
-	//		if(c2.isValid(c2.getRating()))
-		//	{
-			//	System.out.println("Description: " + c2.getDescrition() + "Description: " 
-				//		+ c2.getRating());
-//			}
-	//		else
-		//		c2.setRating();
-	//	}
+	
 
 	}
 
