@@ -7,6 +7,8 @@ public class Athlete
 	String sport;
 	double medalAverage;
 	
+	
+	
 	public Athlete()
 	{
 		name = "John Doe";
@@ -30,6 +32,18 @@ public class Athlete
 		age = howOld;
 		medals = medalsWon;
 	}
+	
+	public static void main(String [] args)
+	{
+		Athlete[] player = new Athlete[3];
+		player[0] = new Athlete(20, 1);
+		player[1] = new Athlete(27, 4);
+		player[2] = new Athlete(19, 0);
+		
+		System.out.println("The total number of Medals won by ALL athletes is: " + Athlete.totalMedals(player));
+	}
+	
+	
 
 	public void setAge(int howOld)
 	{
@@ -77,7 +91,15 @@ public class Athlete
 	}
 	
 	
-	
+	public static int totalMedals(Athlete [] a)
+	{
+		int total = 0;
+		for (int i = 0; i < a.length; i++)
+		{
+			total+=a[i].getMedals();
+		}
+		return total;
+	}
 	
 
 
