@@ -57,9 +57,9 @@ public class GridPlotterApp
         GridPlotterGUI gui =
             new GridPlotterGUI(LONGEST_DELAY_MSECS, SHORTEST_DELAY_MSECS);
 
-        gui.includeMenu(new BasicHelpMenu("GridPlotter", "Your Name Here",
+        gui.includeMenu(new BasicHelpMenu("GridPlotter", "Stephen Johnson",
                                 "with assistance from (whom?)",
-                                "version date", "file:GridPlotterHelp.html"));
+                                "2014", "file:GridPlotterHelp.html"));
 
         // Construct the visible window with the specified components.
         gui.constructWindowContents("Grid Plotter",

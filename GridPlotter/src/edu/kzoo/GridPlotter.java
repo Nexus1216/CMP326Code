@@ -149,6 +149,305 @@ public class GridPlotter implements GridChangeListener
     	}
     }
     
+    public void onDiagonal2ButtonClick ()
+    {
+    	int row = 0; 
+    	int column = theGrid.numCols() - 1;
+    	
+    	while (row < theGrid.numRows() && column >= 0)
+    	{
+    		placeColorBlock(row, column);
+    		row++;
+    		column--;
+    	}
+    }
+    
+    public void onXButtonClick ()
+    {
+    	int row = 0; 
+    	int column = 0;
+    	
+    	while (row < theGrid.numRows() && column < theGrid.numCols())
+    	{
+    		placeColorBlock(row, column);
+    		row++;
+    		column++;
+    	}
+    	
+    	row = 0; 
+    	column = theGrid.numCols() - 1;
+    	
+    	while (row < theGrid.numRows() && column >= 0)
+    	{
+    		placeColorBlock(row, column);
+    		row++;
+    		column--;
+    	}
+    }
+    
+    public void onSquareButtonClick ()
+    {
+    	int row = 0; 
+    	int column = 0;
+    	
+    	while (column < theGrid.numCols())
+    	{
+    		placeColorBlock(row, column);
+    		column++;
+    	}
+    	
+    	row = 1; 
+    	column = theGrid.numCols() - 1;
+    	
+    	while (row < theGrid.numRows())
+    	{
+    		placeColorBlock(row, column);
+    		row++;
+    	}
+    	
+    	row = theGrid.numRows() - 1; 
+    	column = theGrid.numCols() - 2;
+    	
+    	while (column >= 0)
+    	{
+    		placeColorBlock(row, column);
+    		column--;
+    	}
+    	
+    	row = theGrid.numRows() - 2; 
+    	column = 0;
+    	
+    	while (row >= 0)
+    	{
+    		placeColorBlock(row, column);
+    		row--;
+    	}
+    	
+    }
+    
+    public void onRoofButtonClick  ()
+    {
+    	int rowLimit = 0;
+    	int colLimit = theGrid.numCols();
+    	int column;
+    	if(theGrid.numCols()%2 == 0)
+    	{
+    		column = theGrid.numCols()/2 - 1; 
+    		if(theGrid.numCols() > theGrid.numRows())
+    		{
+    			colLimit = theGrid.numRows();
+    		}
+    		else
+    		{
+    			colLimit = theGrid.numCols() - 1;
+    		}
+    	}
+    	else
+    	{
+    		column = (theGrid.numCols()/2);
+    		if(theGrid.numCols() > theGrid.numRows())
+    		{
+    			colLimit = theGrid.numRows();
+    		}
+    		else
+    		{
+    			colLimit = theGrid.numCols();
+    		}
+    	}
+    	int row = 0;
+    	
+    	while (column < colLimit)
+		{
+			placeColorBlock(row, column);
+			row++;
+			column++;
+			rowLimit = row;
+		}
+    	
+    	
+    	for ( int i = 1; i < rowLimit; i++ )
+        {
+    		row = i;
+    		if(theGrid.numCols()%2 == 0)
+        	{
+        		column = theGrid.numCols()/2 - 1; 
+        	}
+        	else
+        	{
+        		column = (theGrid.numCols()/2);
+        	}
+    		
+    		while (row < rowLimit && column < colLimit)
+    		{
+    			placeColorBlock(row, column);
+    			row++;
+    			column++;
+    		}
+        }
+    	
+    	for ( int i = 1; i < rowLimit; i++ )
+        {
+    		row = i;
+    		if(theGrid.numCols()%2 == 0)
+        	{
+        		column = theGrid.numCols()/2 - 2; 
+        	}
+        	else
+        	{
+        		column = (theGrid.numCols()/2 - 1);
+        	}
+    		
+    		while (row < rowLimit && column >= 0)
+    		{
+    			placeColorBlock(row, column);
+    			row++;
+    			column--;
+    		}
+        }
+    	
+    	
+    	
+    }
+    
+    public void onHouseButtonClick  ()
+    {
+    	int rowLimit = 0;
+    	int colLimit = theGrid.numCols();
+    	int column;
+    	if(theGrid.numCols()%2 == 0)
+    	{
+    		column = theGrid.numCols()/2 - 1; 
+    		if(theGrid.numCols() > theGrid.numRows())
+    		{
+    			colLimit = theGrid.numRows();
+    		}
+    		else
+    		{
+    			colLimit = theGrid.numCols() - 1;
+    		}
+    	}
+    	else
+    	{
+    		column = (theGrid.numCols()/2);
+    		if(theGrid.numCols() > theGrid.numRows())
+    		{
+    			colLimit = theGrid.numRows();
+    		}
+    		else
+    		{
+    			colLimit = theGrid.numCols();
+    			
+    		}
+    	}
+    	int row = 0;
+    	
+    	while (column < colLimit)
+		{
+			row++;
+			column++;
+			rowLimit = row;
+		}
+    	
+    	
+    	for ( int i = 1; i < rowLimit; i++ )
+        {
+    		row = i;
+    		if(theGrid.numCols()%2 == 0)
+        	{
+        		column = theGrid.numCols()/2 - 1; 
+        	}
+        	else
+        	{
+        		column = (theGrid.numCols()/2);
+        	}
+    		
+    		while (row < rowLimit && column < colLimit)
+    		{
+    			row++;
+    			column++;
+    		}
+        }
+    	for ( int i = 1; i < rowLimit; i++ )
+        {
+    		row = i;
+    		if(theGrid.numCols()%2 == 0)
+        	{
+        		column = theGrid.numCols()/2 - 2; 
+        	}
+        	else
+        	{
+        		column = (theGrid.numCols()/2 - 1);
+        	}
+    		
+    		while (row < rowLimit && column >= 0)
+    		{
+    			row++;
+    			column--;
+    			
+    		}
+        }
+    	int minCol = colLimit - (colLimit - 1);
+    	int maxRow = colLimit + 1;
+    	if(maxRow > theGrid.numRows())
+    	{
+    		maxRow = theGrid.numRows();
+    		minCol = theGrid.numCols() - colLimit;
+    	}
+    	
+    	for ( int i = minCol; i < colLimit - 1; i++ )
+        {
+            for (int j = rowLimit; j < maxRow; j++ )
+            {
+                placeColorBlock(j, i);
+            }
+        }
+    	
+    }
+    
+    public void onDoorButtonClick  ()
+    {
+    	int colLimit = theGrid.numCols();
+    	int column;
+    	if(theGrid.numCols()%2 == 0)
+    	{
+    		column = theGrid.numCols()/2 - 1; 
+    		if(theGrid.numCols() > theGrid.numRows())
+    		{
+    			colLimit = theGrid.numRows();
+    		}
+    		else
+    		{
+    			colLimit = theGrid.numCols() - 1;
+    		}
+    	}
+    	else
+    	{
+    		column = (theGrid.numCols()/2);
+    		if(theGrid.numCols() > theGrid.numRows())
+    		{
+    			colLimit = theGrid.numRows();
+    		}
+    		else
+    		{
+    			colLimit = theGrid.numCols();
+    			
+    		}
+    	}
+    	
+    	int maxRow = colLimit + 1;
+    	if(maxRow > theGrid.numRows())
+    	{
+    		maxRow = theGrid.numRows();
+    	}
+    	
+    	for ( int r = maxRow - 3; r < maxRow; r++ )
+        {
+    		
+                placeColorBlock(r, column);
+            
+        }
+    }
+    
     public void onTriangleButtonClick  ()
     {
     	int row = 0; 
