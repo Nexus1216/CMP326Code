@@ -79,7 +79,7 @@ public class Book implements Comparable <Book>
 		System.out.println(b3.equals(b4));
 		System.out.println(b3.equals(b1));
 		System.out.println(b4.equals(b3));
-
+		System.out.println(b3.compareTo(b1));
 	}
 
 }

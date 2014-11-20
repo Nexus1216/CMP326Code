@@ -104,5 +104,25 @@ class Polygon {
     return new Point(Math.abs(sum.x/(6*area)),Math.abs(sum.y/(6*area)));
   }
   
+  public static int[] getXCo(Point[] x)
+  {
+	  int [] xCo = new int[x.length];
+	  for(int i = 0; i < x.length; i++)
+	  {
+		  xCo[i] = (int)x[i].x;
+	  }
+	  return xCo;
+  }
+  
+  public static int[] getYCo(Point[] y)
+  {
+	  int [] yCo = new int[y.length];
+	  for(int i = 0; i < y.length; i++)
+	  {
+		  yCo[i] = (int)y[i].y;
+	  }
+	  return yCo;
+  }
+  
   
 }

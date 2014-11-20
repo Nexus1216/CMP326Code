@@ -27,10 +27,10 @@ public class Ship extends Polygon
 		  brush.drawLine((screenWidth / 2) - (shipWidth / 2), (screenHeight / 2) + (shipHeight / 2) + 5, (screenWidth / 2) - (shipWidth / 2) + shipHeight, (screenHeight / 2) + (shipHeight / 2) + 5);
 		  
 		  brush.drawRect((screenWidth / 2) - (shipWidth / 2) - wingWidth, (screenHeight / 2) - (shipWidth / 2), wingWidth, wingHeight);
-   		  brush.drawPolyline(p1, p2, 3);
+   		  brush.fillPolygon(p1,p2,3);
 		  
 	}
-	
+	/*
 	public void keyPressed(KeyEvent e)
 	{
 		int keyCode = e.getKeyCode();
@@ -61,7 +61,7 @@ public class Ship extends Polygon
 	{
 		
 	}
-
+*/
 	public static void main(String[] args) 
 	{
 		// TODO Auto-generated method stub
