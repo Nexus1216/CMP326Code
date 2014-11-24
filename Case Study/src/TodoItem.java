@@ -116,66 +116,15 @@ public class TodoItem implements Comparable <TodoItem>
 		
 
 		TodoItem [] toDoArray= {i3,i1,i2};
+		
 		Arrays.sort(toDoArray);
+		
 		for(int i=0; i<toDoArray.length; i++){
 			System.out.println(i+1 + ":" + toDoArray[i]);
 		}
 
 	}
 	
-	public void addItem()
-	{
-		ArrayList<TodoItem> items = new ArrayList();
-		Scanner kb1 = new Scanner(System.in);
-		Scanner kb2 = new Scanner(System.in);
-		Scanner kb3 = new Scanner(System.in);
-		String n = " ";
-		int p = 0;
-		String d = " ";
-		boolean quit = false;
-		
-		
-		
-		while(!quit)
-		{
-			
-			System.out.print("Enter Task: ");
-			name = kb1.nextLine();
-			if (name.equals("end"))
-			{
-				quit = true;
-				break;
-			}
-			
-			System.out.print("Enter Priority: ");
-			priority = kb3.nextInt();
-			setPriority(priority);
-
-			System.out.print("Enter Date: ");
-			date = kb2.nextLine();
-			if (date.equals("end"))
-			{
-				quit = true;
-				break;
-			}
-			
-			items.add(new TodoItem(name,priority,date));
-			
-			
-		}
-		
-		compareSort(items);
-		
-		for(int i = 0; i < items.size(); i++)
-		{
-			System.out.println(items.get(i).toString());
-		}
-	}
-	
-	public void compareSort(ArrayList i)
-	{
-		Collections.sort(i);
-	}
 
 
 	

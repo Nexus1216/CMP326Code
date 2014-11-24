@@ -12,16 +12,25 @@ import java.awt.event.*;
 
 class Asteroids extends Game {
 	static int counter = 0;
-	private Point[] s = {new Point(2,3), new Point(4,7), new Point(9,5)};
-	private Point p = new Point(8,6);
-	private double r = 240.5;
-	Ship player = new Ship(s,p,r);
+	
+	private Point[] s = {new Point((width / 2) - (Ship.shipWidth / 2),(height / 2) - (Ship.shipHeight / 2)), 
+			
+		//	new Point((width / 2) - (Ship.shipWidth / 2), (height / 2) - (Ship.shipHeight / 2) - 5), 
+		//	new Point((width / 2) - (width / 2) + Ship.shipHeight, (height / 2) - (Ship.shipHeight / 2) - 5),
+		//	new Point((width / 2) - (Ship.shipWidth / 2), (height / 2) - (Ship.shipHeight / 2) - 5), 
+			
+			new Point((width / 2) + (Ship.shipWidth / 2),height / 2), 
+			new Point((width / 2) - (Ship.shipWidth / 2),(height / 2) + (Ship.shipHeight / 2))};
+	private Point p = new Point(width / 2, height /2);
+	private double r = 0;
+	private Ship player = new Ship(s,p,r);
 
   public Asteroids() {
     super("Asteroids!",1600,1200);
     this.setFocusable(true);
 	this.requestFocus();
-	//this.addKeyListener(player);
+	this.addKeyListener(player);
+	
   }
   
 	public void paint(Graphics brush) {
@@ -35,6 +44,7 @@ class Asteroids extends Game {
     	brush.setColor(Color.white);
     	brush.drawString("Counter is " + counter,10,10);
     	player.paint(brush);
+    	//player.paint1(brush);
   }
 	
 	
