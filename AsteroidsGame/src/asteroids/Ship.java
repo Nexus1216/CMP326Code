@@ -85,17 +85,22 @@ public class Ship extends Polygon implements KeyListener
 	{
    		  brush.fillPolygon(getXCo(getPoints()),getYCo(getPoints()),getPoints().length);
    		  
-   		if (isKeyUp) {
+   		if (isKeyUp) 
+   		{
 			brush.drawString("You are holding Up",100,100);
-			position = new Point((position.x += Math.cos(Math.toRadians(rotation))), 
-					(position.y += Math.sin(Math.toRadians(rotation))));
+			//position = new Point((
+					position.x += moveSpeed * Math.cos(Math.toRadians(rotation)); //)), 
+					//(
+					position.y += moveSpeed * Math.sin(Math.toRadians(rotation));//));
 			
 		}
-		if (isKeyLeft) {
+		if (isKeyLeft) 
+		{
 			brush.drawString("You are holding Left",100,200);
 			rotation--;
 		}
-		if (isKeyRight) {
+		if (isKeyRight) 
+		{
 			brush.drawString("You are holding Right",100,300);
 			rotation++;
 		}
