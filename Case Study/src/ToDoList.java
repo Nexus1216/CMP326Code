@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -11,12 +14,12 @@ public class ToDoList
 	{
 		ToDoList tDL = new ToDoList();
 		tDL.addItem();
-
+		
 	}
 	
 	public void addItem()
 	{
-		//ArrayList<TodoItem> items = new ArrayList();
+		ArrayList<TodoItem> items = new ArrayList();
 		String name = "";
 		int priority = 0;
 		String date = "";
@@ -28,42 +31,66 @@ public class ToDoList
 		String d = " ";
 		boolean quit = false;
 		
+		Scanner infile = null;
+		Scanner kb = new Scanner(System.in);
 		
-		
-		while(!quit)
+		System.out.print("Enter File Name: ");
+		String fileName = kb.nextLine();
+		PrintWriter outputStream = null;
+		try
 		{
 			
-			System.out.print("Enter Task: ");
-			name = kb1.nextLine();
-			if (name.equals("end"))
-			{
-				quit = true;
-				break;
-			}
+			infile = new Scanner(new File(fileName));
 			
-			System.out.print("Enter Priority: ");
-			priority = kb3.nextInt();
-			setPriority(priority);
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Error opening file or file does not exist.");
+		}
+		while(infile.hasNextLine())
+		{
+			
+			String line = infile.nextLine();
+			
+			while(!quit)
+			{
+				
+				System.out.print("Enter Task: ");
+				name = kb1.nextLine();
+				if (name.equals("end"))
+				{
+					quit = true;
+					break;
+				}
+				
+				System.out.print("Enter Priority: ");
+				priority = kb3.nextInt();
+				//setPriority(priority);
 
-			System.out.print("Enter Date: ");
-			date = kb2.nextLine();
-			if (date.equals("end"))
-			{
-				quit = true;
-				break;
+				System.out.print("Enter Date: ");
+				date = kb2.nextLine();
+				if (date.equals("end"))
+				{
+					quit = true;
+					break;
+				}
+				
+				addItem(name,priority,date);
+				
+				
 			}
 			
-			addItem(name,priority,date));
+			compareSort();
 			
+			for(int i = 0; i < items.size(); i++)
+			{
+				outputStream.println(items[i].name + " " + items[i].priority + " at " + items[i].date);
+			}
 			
 		}
+		infile.close();
 		
-		compareSort();
 		
-		for(int i = 0; i < items.size(); i++)
-		{
-			System.out.println(items.get(i).toString());
-		}
 	}
 
 	

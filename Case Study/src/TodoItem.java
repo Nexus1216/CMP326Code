@@ -119,8 +119,9 @@ public class TodoItem implements Comparable <TodoItem>
 		
 		Arrays.sort(toDoArray);
 		
-		for(int i=0; i<toDoArray.length; i++){
-			System.out.println(i+1 + ":" + toDoArray[i]);
+		for(int i=0; i< toDoArray.length; i++)
+		{
+			System.out.println(i + 1 + ":" + toDoArray[i]);
 		}
 
 	}
