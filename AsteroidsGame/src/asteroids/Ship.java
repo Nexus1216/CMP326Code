@@ -9,7 +9,7 @@ public class Ship extends Polygon implements KeyListener
 	boolean isKeyUp = false;
 	boolean isKeyLeft = false;
 	boolean isKeyRight = false;
-	double moveSpeed = 1.5;
+	int timer = 0;
 	boolean isWpressed = false;
 	boolean otherKeyPressed = false;
 	static int shipHeight = 30;
@@ -18,6 +18,7 @@ public class Ship extends Polygon implements KeyListener
 	static int wingWidth = 10;
 	public int screenWidth = Asteroids.width;
 	public int screenHeight = Asteroids.height;
+	public int sheilds = 100;
 	
 	public Ship(Point[] s, Point p, double r)
 	{
@@ -72,44 +73,64 @@ public class Ship extends Polygon implements KeyListener
 		
 	}
 	
-	public void keyTyped(KeyEvent e) {
-		
-	}
-	
-	public void paint1(Graphics brush) 
+	public void keyTyped(KeyEvent e) 
 	{
 		
 	}
 	
 	public void paint(Graphics brush)
 	{
-   		  brush.fillPolygon(getXCo(getPoints()),getYCo(getPoints()),getPoints().length);
+   		brush.fillPolygon(getXCo(getPoints()),getYCo(getPoints()),getPoints().length);
+   		if(!Asteroids.gameOver){
+   		if (isKeyUp)
+   		{
+   			timer = 30;
+   		}
+   		else
+   		{
+   			timer--;
+   		}
    		  
-   		if (isKeyUp) 
+   		if (timer > 0) 
    		{
 			brush.drawString("You are holding Up",100,100);
-			//position = new Point((
-					position.x += moveSpeed * Math.cos(Math.toRadians(rotation)); //)), 
-					//(
-					position.y += moveSpeed * Math.sin(Math.toRadians(rotation));//));
-			
+			position.x += Asteroids.moveSpeed * Math.cos(Math.toRadians(rotation));
+			position.y += Asteroids.moveSpeed * Math.sin(Math.toRadians(rotation));
 		}
 		if (isKeyLeft) 
 		{
 			brush.drawString("You are holding Left",100,200);
-			rotation--;
+			rotation -= Asteroids.moveSpeed;
 		}
 		if (isKeyRight) 
 		{
 			brush.drawString("You are holding Right",100,300);
-			rotation++;
+			rotation += Asteroids.moveSpeed;
 		}
+		
+		if(position.x > screenWidth + 10)
+		{
+			position.x = 0;
+		}
+		
+		if(position.x < -10)
+		{
+			position.x = screenWidth;
+		}
+
+
+		if(position.y > screenHeight + 10)
+		{
+			position.y = 0;
+		}
+		
+		if(position.y < -10)
+		{
+			position.y = screenHeight;
+		}
+		
+   		}
 	}
 
-	public static void main(String[] args) 
-	{
-		// TODO Auto-generated method stub
-
-	}
 
 }

@@ -12,18 +12,27 @@ import java.awt.event.*;
 
 class Asteroids extends Game {
 	static int counter = 0;
-	
+	static boolean gameOver = false;
 	private Point[] s = {new Point((width / 2) - (Ship.shipWidth / 2),(height / 2) - (Ship.shipHeight / 2)), 
-			
-		//	new Point((width / 2) - (Ship.shipWidth / 2), (height / 2) - (Ship.shipHeight / 2) - 5), 
-		//	new Point((width / 2) - (width / 2) + Ship.shipHeight, (height / 2) - (Ship.shipHeight / 2) - 5),
-		//	new Point((width / 2) - (Ship.shipWidth / 2), (height / 2) - (Ship.shipHeight / 2) - 5), 
-			
 			new Point((width / 2) + (Ship.shipWidth / 2),height / 2), 
 			new Point((width / 2) - (Ship.shipWidth / 2),(height / 2) + (Ship.shipHeight / 2))};
 	private Point p = new Point(width / 2, height /2);
 	private double r = 0;
-	private Ship player = new Ship(s,p,r);
+	public static double moveSpeed = 2;
+	public Ship player = new Ship(s,p,r);
+	
+	private Point[] a = {new Point(0,0), new Point(50,0), new Point(100,50), new Point(100,50), new Point(160,50),
+			new Point(130,150), new Point(180,200), new Point(210,250), new Point(130,300) , new Point(130,350), 
+			new Point(70,330), new Point(30,380), new Point(-20,350), new Point(-60,290), new Point(-110,280), 
+			new Point(-110,220), new Point(-60,170), new Point(-110,130), new Point(-110,80), new Point(-50,60)};
+	private Point p0 = new Point(0 - width / 2, 0 - height /2);
+	private Point p1 = new Point(width + width / 2, 0 - height /2);
+	private Point p2 = new Point(width + width / 2, height + height /2);
+	private Point p3 = new Point(0 - width / 2, height + height /2);
+	private double r1 = 0;
+	
+	private Asteroid[] comit = {new Asteroid(a,p0,r1,1,1, player), new Asteroid(a,p1,r1,-1.2,1.1, player), new Asteroid(a,p2,r1,-1.5,-1.4, player), 
+			new Asteroid(a,p3,r1,1.3,-1.1, player)};
 
   public Asteroids() {
     super("Asteroids!",1600,1200);
@@ -42,9 +51,26 @@ class Asteroids extends Game {
     	// each time the canvas is repainted
     	counter++;
     	brush.setColor(Color.white);
-    	brush.drawString("Counter is " + counter,10,10);
-    	player.paint(brush);
-    	//player.paint1(brush);
+    	
+    	if(!gameOver)
+    	{
+    		brush.setFont(getFont().deriveFont(25.0f));
+    		brush.drawString("Sheilds " + player.sheilds,10,35);
+    	}
+    	if(player.sheilds <= 0)
+    	{
+    		brush.setFont(getFont().deriveFont(50.0f));
+    		gameOver = true;
+    		brush.drawString("-GAME OVER-", width/2 - 200,height/2);
+    	}
+    		player.paint(brush);
+    		comit[0].paint(brush);
+    		comit[1].paint(brush);
+    		comit[2].paint(brush);
+    		comit[3].paint(brush);
+    	
+    	
+    	
   }
 	
 	

@@ -76,6 +76,11 @@ class Polygon {
   
   public void rotate(int degrees) {rotation = (rotation+degrees)%360;}
   
+  public boolean intersects(Polygon p)
+  {
+	  return contains(p.position);
+  }
+  
   /*
   The following methods are private access restricted because, as this access
   level always implies, they are intended for use only as helpers of the
