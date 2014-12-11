@@ -16,18 +16,34 @@ public class GuessingGame
 		
 		while(!quit)
 		{
-			
-			int magicNum = rnd.nextInt(10);
-			int guessNum = keyboard.nextInt();
-		
-			if(guessNum > magicNum)
-				System.out.print("Too High... Enter the another Number: ");
-			if(guessNum < magicNum)
-				System.out.print("Too Low...  Enter the another Number: ");
-			if(guessNum == magicNum)
+			try
 			{
-				System.out.print("CONGRATULATIONS!!! YOU GUESSED IT!!! ");
-				quit = true;
+				boolean isValid = true;
+				int magicNum = rnd.nextInt(10);
+				int guessNum = keyboard.nextInt();
+				if(guessNum < 1 || guessNum > 10)
+				{
+					isValid = false;
+					throw new Exception("ERROR: Guess muct be 1-10:");
+				}
+				else
+				{
+					if(guessNum > magicNum)
+						System.out.print("Too High... Enter the another Number: ");
+					if(guessNum < magicNum)
+						System.out.print("Too Low...  Enter the another Number: ");
+					if(guessNum == magicNum)
+					{
+						System.out.print("CONGRATULATIONS!!! YOU GUESSED IT!!! ");
+						quit = true;
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				System.out.println(e.getMessage());
+				System.out.print("Try again: (Guess a Number between 1 and 10): ");
+				
 			}
 		}
 		

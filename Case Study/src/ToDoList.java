@@ -9,7 +9,9 @@ import java.util.Scanner;
 public class ToDoList 
 {
 	private ArrayList<TodoItem> items = new ArrayList();
-	
+	String name = "";
+	String date = "";
+	int priority = 0;
 	public static void main(String[] args) 
 	{
 		ToDoList tDL = new ToDoList();
@@ -17,12 +19,10 @@ public class ToDoList
 		
 	}
 	
+	
 	public void addItem()
 	{
 		ArrayList<TodoItem> items = new ArrayList();
-		String name = "";
-		int priority = 0;
-		String date = "";
 		Scanner kb1 = new Scanner(System.in);
 		Scanner kb2 = new Scanner(System.in);
 		Scanner kb3 = new Scanner(System.in);
@@ -34,45 +34,45 @@ public class ToDoList
 		Scanner infile = null;
 		Scanner kb = new Scanner(System.in);
 		
-		System.out.print("Enter File Name: ");
-		String fileName = kb.nextLine();
-		PrintWriter outputStream = null;
-		try
-		{
-			
-			infile = new Scanner(new File(fileName));
-			
-		}
-		catch(FileNotFoundException e)
-		{
-			System.out.println("Error opening file or file does not exist.");
-		}
-		while(infile.hasNextLine())
-		{
-			
-			String line = infile.nextLine();
-			
 			while(!quit)
 			{
+				try
+				{	
+					System.out.print("Enter Task: ");
+					name = kb1.nextLine();
+					if (name.equals("end"))
+					{
+						quit = true;
+						break;
+					}
 				
-				System.out.print("Enter Task: ");
-				name = kb1.nextLine();
-				if (name.equals("end"))
-				{
-					quit = true;
-					break;
-				}
-				
-				System.out.print("Enter Priority: ");
-				priority = kb3.nextInt();
-				//setPriority(priority);
+					System.out.print("Enter Priority: ");
+					priority = kb3.nextInt();
+					
+					if(priority > 5 || priority < 1)
+					{
+						throw new Exception("ERROR: Priority much be 1-5:");
+					}
 
-				System.out.print("Enter Date: ");
-				date = kb2.nextLine();
-				if (date.equals("end"))
+					System.out.print("Enter Date: ");
+					date = kb2.nextLine();
+					if (date.equals("end"))
+					{
+						quit = true;
+						break;
+					}
+				}
+				catch (Exception e)
 				{
-					quit = true;
-					break;
+					System.out.println(e.getMessage());
+					if(p < 1)
+					{
+						priority = 1;
+					}
+					if(p > 5)
+					{
+						priority = 5;
+					}
 				}
 				
 				addItem(name,priority,date);
@@ -82,13 +82,7 @@ public class ToDoList
 			
 			compareSort();
 			
-			for(int i = 0; i < items.size(); i++)
-			{
-				outputStream.println(items[i].name + " " + items[i].priority + " at " + items[i].date);
-			}
 			
-		}
-		infile.close();
 		
 		
 	}
